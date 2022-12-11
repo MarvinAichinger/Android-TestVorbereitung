@@ -19,4 +19,9 @@
         android:name="com.example.myapplication.EditFragment"
         android:label="Einstellungen Ändern"
         tools:layout="@layout/fragment_edit" />
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.example.myapplication.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" />
 </navigation>
