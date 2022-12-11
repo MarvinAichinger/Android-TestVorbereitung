@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.myapplication.SettingsFragment"
-        android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
+        android:label="Email Einstellungen"
+        tools:layout="@layout/fragment_settings">
         <action
             android:id="@+id/action_settingsFragment_to_editFragment"
             app:destination="@id/editFragment" />
@@ -17,6 +17,6 @@
     <fragment
         android:id="@+id/editFragment"
         android:name="com.example.myapplication.EditFragment"
-        android:label="fragment_edit"
+        android:label="Einstellungen Ändern"
         tools:layout="@layout/fragment_edit" />
 </navigation>
