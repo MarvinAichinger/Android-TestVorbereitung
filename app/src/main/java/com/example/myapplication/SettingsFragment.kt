@@ -7,22 +7,27 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.navigation.ui.NavigationUI
 import com.example.myapplication.databinding.FragmentSettingsBinding
 import com.example.myapplication.model.SettingsForm
 
 class SettingsFragment : Fragment() {
 
-    private var settings = SettingsForm(
-        "aichm0782@gmail.com", "Marvin Aichinger",
-        "gmail.com", "littlemarvin"
+    var settings = SettingsForm(
+        "", "",
+        "", ""
     )
 
+    val args: SettingsFragmentArgs by navArgs()
     lateinit var binding: FragmentSettingsBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (args.settings != null) {
+            settings = args.settings!!
+        }
     }
 
     override fun onCreateView(
@@ -38,6 +43,12 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.name.text = settings.name
+        binding.server.text = settings.server
+        binding.username.text = settings.username
+        binding.email.text = settings.email
+
         binding.changeButton.setOnClickListener {
             findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToEditFragment(settings))
         }

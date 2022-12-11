@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.myapplication.databinding.FragmentEditBinding
 import com.example.myapplication.model.SettingsForm
@@ -41,7 +42,11 @@ class EditFragment : Fragment() {
         binding.inputUsername.setText(settings.username)
 
         binding.submit.setOnClickListener {
-            println("submit clicked")
+            settings.name = binding.inputName.text.toString()
+            settings.email = binding.inputEmail.text.toString()
+            settings.username = binding.inputUsername.text.toString()
+            settings.server = binding.inputServer.text.toString()
+            findNavController().navigate(EditFragmentDirections.actionEditFragmentToSettingsFragment(settings))
         }
     }
 

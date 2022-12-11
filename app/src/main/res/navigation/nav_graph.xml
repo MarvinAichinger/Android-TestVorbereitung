@@ -13,6 +13,11 @@
         <action
             android:id="@+id/action_settingsFragment_to_editFragment"
             app:destination="@id/editFragment" />
+        <argument
+            android:name="settings"
+            app:argType="com.example.myapplication.model.SettingsForm"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
     <fragment
         android:id="@+id/editFragment"
@@ -22,6 +27,9 @@
         <argument
             android:name="settings"
             app:argType="com.example.myapplication.model.SettingsForm" />
+        <action
+            android:id="@+id/action_editFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/helpFragment"
