@@ -9,11 +9,17 @@ import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.myapplication.databinding.FragmentSettingsBinding
+import com.example.myapplication.model.SettingsForm
 
 class SettingsFragment : Fragment() {
 
+    private var settings = SettingsForm(
+        "aichm0782@gmail.com", "Marvin Aichinger",
+        "gmail.com", "littlemarvin"
+    )
 
     lateinit var binding: FragmentSettingsBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +39,7 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.changeButton.setOnClickListener {
-            findNavController().navigate(R.id.action_settingsFragment_to_editFragment)
+            findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToEditFragment(settings))
         }
     }
 

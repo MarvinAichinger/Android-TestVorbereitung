@@ -18,7 +18,11 @@
         android:id="@+id/editFragment"
         android:name="com.example.myapplication.EditFragment"
         android:label="Einstellungen Ändern"
-        tools:layout="@layout/fragment_edit" />
+        tools:layout="@layout/fragment_edit" >
+        <argument
+            android:name="settings"
+            app:argType="com.example.myapplication.model.SettingsForm" />
+    </fragment>
     <fragment
         android:id="@+id/helpFragment"
         android:name="com.example.myapplication.HelpFragment"
