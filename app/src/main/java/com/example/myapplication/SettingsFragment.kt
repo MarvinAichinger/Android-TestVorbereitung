@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -14,10 +15,7 @@ import com.example.myapplication.model.SettingsForm
 
 class SettingsFragment : Fragment() {
 
-    var settings = SettingsForm(
-        "", "",
-        "", ""
-    )
+    var settings = SettingsForm("", "", "", "")
 
     val args: SettingsFragmentArgs by navArgs()
     lateinit var binding: FragmentSettingsBinding
@@ -25,6 +23,7 @@ class SettingsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        settings = getStoredSettings(this.context)
         if (args.settings != null) {
             settings = args.settings!!
         }
@@ -74,6 +73,17 @@ class SettingsFragment : Fragment() {
     }
 
     companion object {
+
+        fun getStoredSettings(context: Context?): SettingsForm {
+            val preferences = context?.applicationContext?.getSharedPreferences(MainActivity.PREFERENCE_FILENAME, Context.MODE_PRIVATE)
+            val settings = SettingsForm(
+                preferences?.getString(MainActivity.EMAIL_KEY, "")!!,
+                preferences.getString(MainActivity.NAME_KEY, "")!!,
+                preferences.getString(MainActivity.SERVER_KEY, "")!!,
+                preferences.getString(MainActivity.USERNAME_KEY, "")!!
+            )
+            return settings
+        }
 
     }
 }

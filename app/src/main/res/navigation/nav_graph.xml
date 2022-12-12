@@ -34,6 +34,6 @@
     <fragment
         android:id="@+id/helpFragment"
         android:name="com.example.myapplication.HelpFragment"
-        android:label="fragment_help"
+        android:label="Help"
         tools:layout="@layout/fragment_help" />
 </navigation>

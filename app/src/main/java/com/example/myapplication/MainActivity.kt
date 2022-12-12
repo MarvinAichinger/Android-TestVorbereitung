@@ -22,4 +22,12 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         return navController.navigateUp()
     }
+
+    companion object {
+        val PREFERENCE_FILENAME = "MailPreference"
+        val EMAIL_KEY = "EMAIL"
+        val NAME_KEY = "NAME"
+        val SERVER_KEY = "SERVER"
+        val USERNAME_KEY = "USERNAME"
+    }
 }

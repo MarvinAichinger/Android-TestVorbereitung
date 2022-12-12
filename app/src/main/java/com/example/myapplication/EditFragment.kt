@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import androidx.fragment.app.Fragment
@@ -46,11 +47,23 @@ class EditFragment : Fragment() {
             settings.email = binding.inputEmail.text.toString()
             settings.username = binding.inputUsername.text.toString()
             settings.server = binding.inputServer.text.toString()
+
+            //save
+            val preferences = context?.applicationContext?.getSharedPreferences(MainActivity.PREFERENCE_FILENAME, Context.MODE_PRIVATE)?.edit()
+            preferences?.putString(MainActivity.EMAIL_KEY, settings.email)
+            preferences?.putString(MainActivity.USERNAME_KEY, settings.username)
+            preferences?.putString(MainActivity.SERVER_KEY, settings.server)
+            preferences?.putString(MainActivity.NAME_KEY, settings.name)
+            preferences?.apply()
+
             findNavController().navigate(EditFragmentDirections.actionEditFragmentToSettingsFragment(settings))
         }
     }
 
     companion object {
+
+
+
     }
 
 }
